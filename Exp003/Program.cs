@@ -1,6 +1,8 @@
-﻿int numberA = 3, numberB = 80; 
+﻿int numberA = new Random().Next(1,20), numberB = new Random().Next(1,20); // 1 2 3  ... 19
 // целые числа - double
 int sum = numberA + numberB;
+Console.WriteLine(numberA);
+Console.WriteLine(numberB);
 Console.Write("Это результат сложения numberA и numberB - ");
 Console.WriteLine(sum);
 

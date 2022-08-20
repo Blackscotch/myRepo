@@ -9,7 +9,7 @@ string? end = "конец", input = "";
 // Потому, если нам нужны положительные целые числа (как в примере), то это нужно указать в задаче.
 while(input?.ToLower() != end){
     int number;
-    do{
+    while(true){
         try{
             Console.Write("Укажите какое-нибудь целое число: ");
             number = Convert.ToInt32(Console.ReadLine());
@@ -17,8 +17,7 @@ while(input?.ToLower() != end){
         }catch (FormatException){
             Console.WriteLine("Неверный формат ввода. Введите целое число");
         }
-    }
-    while(true);
+    };
 
     // Если это положительное число и оно больше или равно 2
     if(number >= 2){
@@ -27,10 +26,14 @@ while(input?.ToLower() != end){
         Console.Write("Число "+number+" положительно и включает четные числа -> ");
         // Считаем все четные числа в диапазоне от 2 до N
         while(i <= number){
-            Console.Write(i+", ");
+            if(i < number && i != number - 1){
+                Console.Write(i+", ");
+            }
+            else if(i == number - 1 || i == number){
+                Console.WriteLine(i+".");
+            }
             i+= 2;
         }
-        Console.WriteLine(".");
     }
     // Если это отрицательное число и оно меньше или равно -2
     else if(number <= -2){
@@ -38,10 +41,14 @@ while(input?.ToLower() != end){
         Console.Write("Число "+number+" отрицательно и включает четные числа -> ");
         // Считаем все четные числа в диапазоне от -2 до -N
         while(i >= number){
-            Console.Write(i+", ");
+            if(i > number  && i != number + 1){
+                Console.Write(i+", ");
+            }
+            else if(i == number + 1 || i == number){
+                Console.WriteLine(i+".");
+            }
             i-= 2;
         }
-        Console.WriteLine(".");
     }
     // Если это 1 или -1
     else if(number == -1 || number == 1){

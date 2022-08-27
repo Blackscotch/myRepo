@@ -4,58 +4,52 @@ namespace Seminar3
 {
     internal class NewBaseType
     {
-        private static void NumberOfQart(string data)
-        {
-            int quart;
-            while (true)
+        public static void Main(string[] args){
+
+            void NumberOfQart(string? data)
             {
-                if (int.TryParse(data, out quart))
+                int quart;
+                while (true)
                 {
-                    if (quart > 0 && quart < 5)
+                    if (int.TryParse(data, out quart))
                     {
-                        Console.WriteLine($"Введено число {quart}");
-                        switch (quart)
+                        if (quart > 0 && quart < 5)
                         {
-                            case 1:
-                                Console.WriteLine($"В четверти {quart} возможные значения координат х и y от 0 до +бесконечность");
-                                break;
+                            Console.WriteLine($"Введено число {quart}");
+                            switch (quart)
+                            {
+                                case 1:
+                                    Console.WriteLine($"В четверти {quart} возможные значения координат х и y от 0 до +бесконечность");
+                                    break;
 
-                            case 2:
-                                Console.WriteLine($"В четверти {quart} возможные значения координат х от 0 до -бесконечность и y от 0 до +бесконечность");
-                                break;
+                                case 2:
+                                    Console.WriteLine($"В четверти {quart} возможные значения координат х от 0 до -бесконечность и y от 0 до +бесконечность");
+                                    break;
 
-                            case 3:
-                                Console.WriteLine($"В четверти {quart} возможные значения координат х и y от 0 до -бесконечность");
-                                break;
+                                case 3:
+                                    Console.WriteLine($"В четверти {quart} возможные значения координат х и y от 0 до -бесконечность");
+                                    break;
 
-                            case 4:
-                                Console.WriteLine($"В четверти {quart} возможные значения координат х от 0 до +бесконечность и y от 0 до -бесконечность");
-                                break;
+                                case 4:
+                                    Console.WriteLine($"В четверти {quart} возможные значения координат х от 0 до +бесконечность и y от 0 до -бесконечность");
+                                    break;
+                            }
+
+                            break;
                         }
-
-                        break;
+                        else
+                        {
+                            Console.WriteLine("Указанной четверти не существует. Укажите четверть от 1 до 4");
+                            data = Console.ReadLine();
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Указанной четверти не существует. Укажите четверть от 1 до 4");
+                        Console.WriteLine("Ошибка ввода. Введите число.");
                         data = Console.ReadLine();
                     }
                 }
-                else
-                {
-                    Console.WriteLine("Ошибка ввода. Введите число.");
-                    data = Console.ReadLine();
-                }
             }
-
-        }
-
-        
-    }
-
-    class TestMetods : NewBaseType
-    {
-        public static void Main(string[] args){
             
             Console.WriteLine("Нужно ввести номер четверти (1 - 4)");
             NumberOfQart(Console.ReadLine());

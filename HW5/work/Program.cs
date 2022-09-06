@@ -4,7 +4,7 @@
 // Напишите программу, которая покажет количество чётных чисел в массиве.
 // [345, 897, 568, 234] -> 2
 
-// CountNumbers();
+CountNumbers();
 
 int CountNumbers()
 {
@@ -36,7 +36,7 @@ int CountNumbers()
 // [3, 7, 23, 12] -> 19
 // [-4, -6, 89, 6] -> 0
 
-// SummElements();
+SummElements();
 
 int SummElements()
 {
@@ -72,7 +72,7 @@ int SummElements()
 // [1 2 3 4 5] -> 5 8 3
 // [6 7 3 6] -> 36 21
 
-// ProductNumbers();
+ProductNumbers();
 
 int[] ProductNumbers()
 {
@@ -175,25 +175,26 @@ double NamberDiference()
 
     double[] mass = new double[len];
 
-    double max = mass[0];
-    double min = mass[0];
+    for (int i = 0; i < len; i++)
+    {
+        mass[i] = Convert.ToDouble(new Random().Next(-99, 100));
+    }
+    // Присвоим мин и макс созданному массиву. Хотел все сделать в первом for, но сломал голову, потмоу объявил второй.
+    double max = mass[0], min = mass[0];
 
     for (int i = 0; i < len; i++)
     {
-        mass[i] = Convert.ToDouble(new Random().Next(0, 100));
-        
         if(mass[i] > max)
         {
             max = mass[i];
-
-            if(mass[i] < min)
-            {
-                min = mass[i];
-            }
         }
-    
+        if(mass[i] < min)
+        {
+            min = mass[i];
+        }
     }
     double result = max - min;
+
     Console.WriteLine($"Массив: {String.Join(", ", mass)} и мин = {min}, макс = {max}");
     Console.WriteLine($"Разница между {max} и {min} = {result}");
 

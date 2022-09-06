@@ -15,57 +15,91 @@ while(idx < n)
 }*/
 
 
-void FillArray(int[] collection)
+// void FillArray(int[] collection)
+// {
+//     int length = collection.Length;
+//     int index = 0;
+
+//     while(index < length)
+//     {
+//         collection[index] = new Random().Next(1, 10);
+//         index++;
+//     }
+// }
+
+// void PrintArray(int[] col)
+// {
+//     int count = col.Length;
+//     int position = 0;
+
+//     while(position < count)
+//     {
+//         Console.WriteLine(col[position]);
+//         position++;
+//     }
+// }
+
+// int IndexOff(int[] collection, int find)
+// {
+//     int count = collection.Length;
+//     int index = 0;
+//     int position = -1;
+
+//     while(index < count)
+//     {
+//         if(collection[index] == find)
+//         {
+//             position = index;
+//             break;
+//         }
+//         index++;
+//     }
+//     return position;
+// }
+
+// // Инициализируем новый массив с определенным количеством элементов
+// int[] array = new int[10];
+
+// FillArray(array);
+// array[4] = 4;
+// array[6] = 4;
+// PrintArray(array);
+
+// Console.WriteLine();
+
+// int pos = IndexOff(array, 444);
+// Console.WriteLine(pos);
+
+
+ProductNumbers();
+
+// Это будет работать так
+
+void ProductNumbers()
 {
-    int length = collection.Length;
-    int index = 0;
+    int number;
 
-    while(index < length)
-    {
-        collection[index] = new Random().Next(1, 10);
-        index++;
-    }
-}
-
-void PrintArray(int[] col)
-{
-    int count = col.Length;
-    int position = 0;
-
-    while(position < count)
-    {
-        Console.WriteLine(col[position]);
-        position++;
-    }
-}
-
-int IndexOff(int[] collection, int find)
-{
-    int count = collection.Length;
-    int index = 0;
-    int position = -1;
-
-    while(index < count)
-    {
-        if(collection[index] == find)
+    Console.WriteLine("Введите число: ");
+    string data = Console.ReadLine();
+    
+        while(true)
         {
-            position = index;
-            break;
+            if(int.TryParse(data, out number)) //если это условие выполнится (мы получим число), то выпадим из списка
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Ошибка, введите число: ");
+                data = Console.ReadLine();
+            }
         }
-        index++;
-    }
-    return position;
+
+        int result = 1;
+
+        for (int i = 2; i <= number; i++)
+        {
+            result = result * i;
+        }
+        Console.WriteLine($"Произведение чисел = {result}");
 }
-
-// Инициализируем новый массив с определенным количеством элементов
-int[] array = new int[10];
-
-FillArray(array);
-array[4] = 4;
-array[6] = 4;
-PrintArray(array);
-
-Console.WriteLine();
-
-int pos = IndexOff(array, 444);
-Console.WriteLine(pos);

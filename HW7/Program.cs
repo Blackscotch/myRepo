@@ -5,8 +5,8 @@
 // 8 7,8 -7,1 9
 
 // Сразу запишем результат метода в новый массив, он понадобится далее
-// double[,] mass = GetArray();
-// Console.WriteLine();
+double[,] mass = GetArray();
+Console.WriteLine();
 
 double[,] GetArray()
 {
@@ -44,16 +44,16 @@ double[,] GetArray()
 // 8 4 2 4
 // 17 -> такого числа в массиве нет
 
-// Console.WriteLine("Задача 50. Примем на вход позиции элемента и найдем его, если он есть");
+Console.WriteLine("Задача 50. Примем на вход позиции элемента и найдем его, если он есть");
 
-// Console.WriteLine("Задайте позицию 1:");
-// int num1 = SetNumber(Console.ReadLine());
+Console.WriteLine("Задайте позицию 1:");
+int num1 = SetNumber(Console.ReadLine());
 
-// Console.WriteLine("Задайте позицию 2:");
-// int num2 = SetNumber(Console.ReadLine());
+Console.WriteLine("Задайте позицию 2:");
+int num2 = SetNumber(Console.ReadLine());
 
 // Все данные есть, подрубаем метод
-// FillPosition(mass, num1, num2);
+FillPosition(mass, num1, num2);
 
 void FillPosition(double[,] array, int pos1, int pos2)
 {
@@ -92,7 +92,7 @@ void FillPosition(double[,] array, int pos1, int pos2)
 
 ArithmeticMean();
 
-void ArithmeticMean()
+double[] ArithmeticMean()
 {
     Console.Clear();
     Console.WriteLine("Задача 52. Найдем среднее арифметическое столбцов массива");
@@ -116,16 +116,30 @@ void ArithmeticMean()
         Console.WriteLine();
     }
     Console.WriteLine();
-    string ness = "значение";
-    for (int i = 0; i < arr.GetLength(0); i++)
+
+    // Второй массив для сохранения значений дабл, т.к. находим среднее арифметическое
+    // В первом for фиксируем столбец (n), а во втором бежим по строкам (m), записывая j элемент i столбца
+    double[] mass = new double[n];
+
+    for (int i=0; i < n; i++)
     {
-        int sum = 0;
-        for (int j = 0; j < arr.GetLength(1); j++)
+        for(int j=0; j < m; j++)
         {
-            sum += arr[j, i];
+            mass[i] += arr[j, i];
         }
-        Console.WriteLine("Sum in {0} column: {1} просто {2}", i, sum, ness);
+        mass[i] = Math.Round(mass[i] / m, 1);
+
+        // Вот это интересная интреполяция. Не знал, что так можно)) уже 3-й способ интреполяции откапал.
+        Console.WriteLine("Среднее арифметическое {0} столбца: {1}", i+1, mass[i]);
     }
+
+    // Ну и последний for (лишний), но для ответа, как в задаче
+    Console.Write("Среднее арифметическое каждого столбца: ");
+    for (int i = 0; i < mass.Length; i++)
+    {
+        Console.Write($"[{mass[i]}] ");
+    }
+    return mass;
 }
 
 // Метод для определения числа
